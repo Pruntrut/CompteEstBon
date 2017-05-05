@@ -1,0 +1,114 @@
+<!-- ATTENTION : A Visualier dans firefox (ecran de victoire a des bugs) -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Le Compte est Bon</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="logiqueStart.js"></script>
+        <script src="logiqueSolutions.js"></script>
+        <script src="logiqueTirage.js"></script>
+        <script src="logiqueVictoire.js"></script>
+
+        <script src="dessin.js"></script>
+        <script src="js-ceb.js"></script>
+    </head>
+    <body>
+
+        <!-- Titre -->
+        <div class="heading">
+            <h1>Le compte est bon</h1>
+        </div>
+        <!-- Page d'accueil -->
+        <div id="accueil">
+            <div id="entree-noms">
+                <div class="nom-div">
+                    <input id="nom1" class="nom-input" placeholder="Joueur 1"/>
+                </div>
+                <div class="nom-div">
+                    <input id="nom2" class="nom-input" placeholder="Joueur 2"/>
+                </div>
+            </div>
+            <button onclick="startgame()">Jouer !</button>
+        </div>
+
+
+
+        <!-- Contient le tableau des cartes et la cibles à atteindre -->
+        <div id="common">
+            <div id="cartes-container">
+                <h2>Cartes</h2>
+                <div id="divTabCartes">
+
+                </div>
+            </div>
+            <div id="cible">
+
+            </div>
+        </div>
+
+        <!-- Timer -->
+        <div id="timer-container">
+            <div class="timer-bar">
+                <div id="progress"></div>
+                <div id="seconds"></div>
+            </div>
+            <button class="btn-skip" onclick="skipTimer()">Skip</button>
+        </div>
+
+        <!-- Ce div se cache une fois qu'un joueur a entré son nombre -->
+        <div id="player-container">
+            <div id="player1">
+                <h2 id="player-name-1">Joueur 1</h2>
+                <input id="cibleJ1" type="text" placeholder="#">
+            </div>
+
+            <div id="player2">
+                <h2 id="player-name-2">Joueur 2</h2>
+                <input id="cibleJ2" type="text" placeholder="#">
+            </div>
+
+            <button class="button-bottom" onclick="handleCibles(cible)">Valider</button>
+        </div>
+
+        <!-- Caché au début, gère l'entrée des solutions -->
+        <div id="solution-container">
+            <div id="operations-container"></div>
+            <div class="sols-flex-container">
+                <div class="solution-message">Entrez votre solution, <span id="solution-joueur"></span> : </div>
+                <div class="solution-current"><span class="calcul-actuel">Calcul actuel :</span>
+                    <span id="current-op"></span>
+                    <button onclick="effacerCalc()">Suppr</button>
+                </div>
+                <div id="solution"></div>
+            </div>
+
+
+            <button class="button-bottom" onclick="opFinished()">Suivant</button>
+        </div>
+
+        <!-- Cette div est l'écran de victoire -->
+        <div id="victory-container">
+            <div id="personne">
+                <div class="frown">&#9785;</div>
+                <div>Personne n'a résussi à entrer une solution correcte.</div>
+            </div>
+            <div id="un-vainqueur">
+                <div id="victory-message">
+                    <span id="one-victor">Le vainqueur est : <br /><span class="v-titre" id="victor"></span></span>
+                    <span class="v-titre" id="draw">Egalité !</span>
+                </div>
+                <div id="victor-cible">
+                    <span id="ov-msg">Il a</span><span id="draw-msg">Les deux joueurs ont</span> réussi à atteindre le chiffre <div id="target"></div> en <span id="steps"></span> étapes.
+                </div>
+                <div class="victory-solution-container">
+                    <span class="ital">Voici <span id="ov-pronoun">sa solution</span><span id="draw-pronoun">leurs solutions</span>  :</span>
+                    <div id="opstr-container"></div>
+                </div>
+            </div>
+
+            <button class="button-newgame" onclick="window.location.reload()">Nouvelle partie</button>
+        </div>
+    </body>
+</html>
